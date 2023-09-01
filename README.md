@@ -1,2 +1,2 @@
-# SantasLittleDocumentHelper
+# DocumentHelper
 Document-reading virtual assistant
