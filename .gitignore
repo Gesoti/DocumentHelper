@@ -22,3 +22,4 @@ MANIFEST
 # LLM used for POC
 models
 vectorstore
+documents

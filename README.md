@@ -40,3 +40,6 @@ This Virtual assistant will help you parse your own documents into a vectorstore
 
 ## Acknowledgements
 Following [tutorial](https://python.langchain.com/docs/use_cases/question_answering/) from langchain website.
+Papers used for task demonstration
+- Parmaxi, Antigoni. "Virtual reality in language learning: A systematic review and implications for research and practice." Interactive learning environments 31.1 (2023): 172-184.
+- Rojas-Sánchez, Mario A., Pedro R. Palos-Sánchez, and José A. Folgado-Fernández. "Systematic literature review and bibliometric analysis on virtual reality and education." Education and Information Technologies 28.1 (2023): 155-192.
