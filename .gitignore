@@ -17,7 +17,12 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# build
 **__pycache__
+
+# pytest
+.pytest*
 
 # LLM used for POC
 models
