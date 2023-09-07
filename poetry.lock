@@ -156,17 +156,17 @@ files = [
 
 [[package]]
 name = "asttokens"
-version = "2.2.1"
+version = "2.4.0"
 description = "Annotate AST trees with source code positions"
 optional = false
 python-versions = "*"
 files = [
-    {file = "asttokens-2.2.1-py2.py3-none-any.whl", hash = "sha256:6b0ac9e93fb0335014d382b8fa9b3afa7df546984258005da0b9e7095b3deb1c"},
-    {file = "asttokens-2.2.1.tar.gz", hash = "sha256:4622110b2a6f30b77e1473affaa97e711bc2f07d3f10848420ff1898edbe94f3"},
+    {file = "asttokens-2.4.0-py2.py3-none-any.whl", hash = "sha256:cf8fc9e61a86461aa9fb161a14a0841a03c405fa829ac6b202670b3495d2ce69"},
+    {file = "asttokens-2.4.0.tar.gz", hash = "sha256:2e0171b991b2c959acc6c49318049236844a5da1d65ba2672c4880c1c894834e"},
 ]
 
 [package.dependencies]
-six = "*"
+six = ">=1.12.0"
 
 [package.extras]
 test = ["astroid", "pytest"]
@@ -519,13 +519,13 @@ numpy = "*"
 
 [[package]]
 name = "chromadb"
-version = "0.4.8"
+version = "0.4.9"
 description = "Chroma."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "chromadb-0.4.8-py3-none-any.whl", hash = "sha256:74f9af92e12e22677fe65201acd75e98d8efdd7613ec4084f914868555a3b09f"},
-    {file = "chromadb-0.4.8.tar.gz", hash = "sha256:441f53ab474b684075de85e637ddcf691946a1dba06ea7b8859b914ab4cd9ea0"},
+    {file = "chromadb-0.4.9-py3-none-any.whl", hash = "sha256:d96f9e8b442054b316ddb4666b0a5bf761a7f1169ba88eb76e2159204f17c77b"},
+    {file = "chromadb-0.4.9.tar.gz", hash = "sha256:5bf800f064cd0158f27368850897c417913650f1c1c9decaad3cb36ba1950a87"},
 ]
 
 [package.dependencies]
@@ -533,7 +533,7 @@ bcrypt = ">=4.0.1"
 chroma-hnswlib = "0.7.2"
 fastapi = ">=0.95.2,<0.100.0"
 importlib-resources = "*"
-numpy = ">=1.21.6"
+numpy = {version = ">=1.22.5", markers = "python_version >= \"3.8\""}
 onnxruntime = ">=1.14.1"
 overrides = ">=7.3.1"
 posthog = ">=2.4.0"
@@ -933,6 +933,25 @@ ssh = ["paramiko"]
 tqdm = ["tqdm"]
 
 [[package]]
+name = "gpt4all"
+version = "1.0.9"
+description = "Python bindings for GPT4All"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "gpt4all-1.0.9-py3-none-macosx_10_9_universal2.whl", hash = "sha256:b47c28cd16676fe64a827897a2803498a380d3c5419951652452ab5e158398d5"},
+    {file = "gpt4all-1.0.9-py3-none-manylinux1_x86_64.whl", hash = "sha256:365e99207f0d473878e2bae9fc56a1f0c985ac62fa3aef38e6ba1c94765f414b"},
+    {file = "gpt4all-1.0.9-py3-none-win_amd64.whl", hash = "sha256:c163c41dbadcc3cf12ebb558de1822f17fec7a80abfd9b1b8daf20bc566f35ba"},
+]
+
+[package.dependencies]
+requests = "*"
+tqdm = "*"
+
+[package.extras]
+dev = ["black", "isort", "mkautodoc", "mkdocs-jupyter", "mkdocs-material", "mkdocstrings[python]", "pytest", "setuptools", "twine", "wheel"]
+
+[[package]]
 name = "greenlet"
 version = "2.0.2"
 description = "Lightweight in-process concurrent programming"
@@ -1152,13 +1171,13 @@ files = [
 
 [[package]]
 name = "ipykernel"
-version = "6.25.1"
+version = "6.25.2"
 description = "IPython Kernel for Jupyter"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "ipykernel-6.25.1-py3-none-any.whl", hash = "sha256:c8a2430b357073b37c76c21c52184db42f6b4b0e438e1eb7df3c4440d120497c"},
-    {file = "ipykernel-6.25.1.tar.gz", hash = "sha256:050391364c0977e768e354bdb60cbbfbee7cbb943b1af1618382021136ffd42f"},
+    {file = "ipykernel-6.25.2-py3-none-any.whl", hash = "sha256:2e2ee359baba19f10251b99415bb39de1e97d04e1fab385646f24f0596510b77"},
+    {file = "ipykernel-6.25.2.tar.gz", hash = "sha256:f468ddd1f17acb48c8ce67fcfa49ba6d46d4f9ac0438c1f441be7c3d1372230b"},
 ]
 
 [package.dependencies]
@@ -1267,6 +1286,89 @@ python-versions = ">=3.7"
 files = [
     {file = "joblib-1.3.2-py3-none-any.whl", hash = "sha256:ef4331c65f239985f3f2220ecc87db222f08fd22097a3dd5698f693875f8cbb9"},
     {file = "joblib-1.3.2.tar.gz", hash = "sha256:92f865e621e17784e7955080b6d042489e3b8e294949cc44c6eac304f59772b1"},
+]
+
+[[package]]
+name = "jq"
+version = "1.5.0"
+description = "jq is a lightweight and flexible JSON processor."
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "jq-1.5.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:8e8c1bdd81c6ece8b6c575ef1af8f527da27fbe2efd766b6df6298486fa61376"},
+    {file = "jq-1.5.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:bdb30ec3bbfe71c3c24c1592f866d7ebf203e17441499f0c6f192f7eb1b8e177"},
+    {file = "jq-1.5.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ae83d6f4a8ceb060034ceb88af64fecfd91299e053c4e8d88142d8e88e8d487a"},
+    {file = "jq-1.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5d94d51152185436457b6b1f3cb9ee673832427305d45cd93571ae91f384ef8b"},
+    {file = "jq-1.5.0-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:9b8a53450cbbe750831748dfd1821c1962f0ecff8dace5939d2920e57177c7b0"},
+    {file = "jq-1.5.0-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:09bfe937eebed29b411de27ae500a086653a928f6b0e5b93761bae1c88371831"},
+    {file = "jq-1.5.0-cp310-cp310-musllinux_1_1_i686.whl", hash = "sha256:cf084a287b66c5a832d7e145de407bdb7e083a401858afb102bc386905ac3541"},
+    {file = "jq-1.5.0-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:b2f5e4810230f6c3bed8df527cf5af2de21a67241f5fcfbf83bd85d00e4a0751"},
+    {file = "jq-1.5.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:06697340b50143d024077628150cbc39ee0b49abf1572f830a0cf68982ae69e3"},
+    {file = "jq-1.5.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:cb14b7cb700a7e309733d40288a85fd00e96c7b6b299110a94572643dbebadb3"},
+    {file = "jq-1.5.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:61e087132b9682548cc36a2700f304aafb0f46cfcd2b427debc38f9c236de821"},
+    {file = "jq-1.5.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5de12e277457b1de6b9b82ce450c537eb8c49a2b412572d2af27457cd6754040"},
+    {file = "jq-1.5.0-cp311-cp311-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:00817a2c95ade48b96b45572a53c56e93dd59dcfac3e1d2ce318d856b78869b9"},
+    {file = "jq-1.5.0-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:faa48f294934b996983ebf7d60cbd70c15694233a55ed0a630a75b514cccd1b1"},
+    {file = "jq-1.5.0-cp311-cp311-musllinux_1_1_i686.whl", hash = "sha256:9e935d899d453b59434cc091fe8c6821c3711665ae6c1e1b6f2e7df7dda78188"},
+    {file = "jq-1.5.0-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:ecb3a44559fdfdd0241cfade1cfce65fc53ae130a93711ae52e74a43bc65d34a"},
+    {file = "jq-1.5.0-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:bc6abc8d1ae81dac4926625cde5e6ebc3cd9dfe7159337932dd3a0e68c107443"},
+    {file = "jq-1.5.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:ce2c1d23a12932bdc6c6b83f293d3a89b3dd0bbaa179d975ab630f2943be2b5f"},
+    {file = "jq-1.5.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0953069eed82f53bb079c4b5680d6049f28397989c5275f9b9b4583a4dacee58"},
+    {file = "jq-1.5.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e78255d68734f5a4f42bfe003d6393b382031346d26611f788e73147d11bf3e4"},
+    {file = "jq-1.5.0-cp312-cp312-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:7f0940f33f16c7f388c88243b51a61c95e748a46a7cc37817ce75b96741b7b8e"},
+    {file = "jq-1.5.0-cp312-cp312-musllinux_1_1_aarch64.whl", hash = "sha256:cb42418ac19eb4b83aea499585e39e9f6afc9cd7b88b97bff98fcb7b8226e363"},
+    {file = "jq-1.5.0-cp312-cp312-musllinux_1_1_i686.whl", hash = "sha256:6eaebbc9b7536f21302a9c1649f4d927301fe3d9b51cdcf4556e5de347b6a266"},
+    {file = "jq-1.5.0-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:36e43692ab7a344907e02ed3152580f9fff61586e61b5f2a887fb7c0d233ed27"},
+    {file = "jq-1.5.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:1f4d50f7d89a18d9cfcea9d44433562379f1c03d6ea128ec5087497b359d298e"},
+    {file = "jq-1.5.0-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0ffc746cb7f3c1a15f51671b8e47f06c491eda528365ceda584fe0c75d7a56bb"},
+    {file = "jq-1.5.0-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3766fde4feb4b8f6a74b99a1988f5befc4dde9b7d66ee01a402e0aeebf160d0b"},
+    {file = "jq-1.5.0-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:4dedc4d8bdcf8f95a2f05927bc7ec24ce4528d94b30394f02638dce1dd694dc7"},
+    {file = "jq-1.5.0-cp36-cp36m-musllinux_1_1_aarch64.whl", hash = "sha256:d122d2ce3342a5594e76b6cbe6454346114bd077a6329a642fd10371ff0177e1"},
+    {file = "jq-1.5.0-cp36-cp36m-musllinux_1_1_i686.whl", hash = "sha256:b9954bcc189e25d3f30768badb5891646500d1c93b371fb09e3129e8abfe6d46"},
+    {file = "jq-1.5.0-cp36-cp36m-musllinux_1_1_x86_64.whl", hash = "sha256:5e73e24009343c869582426e385477e389d735143a002dfb74d66ca9b2f23827"},
+    {file = "jq-1.5.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:1964acf2ce836cc51feb7e714571d6c20bc78dd1bf113425f0dc396723629d19"},
+    {file = "jq-1.5.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0d32ff6e62f3defa86bb8caef692e7e512a6b51b81386660606ff3ac495ec7e8"},
+    {file = "jq-1.5.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:16e1073f64f76cdef5100f5b542f46425fd394d257ef99e39f46b0dad3a9f223"},
+    {file = "jq-1.5.0-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:d97c40df8e084ab59121fa5fa649781d2b62a481ead47d97de8eb99b1d27fb57"},
+    {file = "jq-1.5.0-cp37-cp37m-musllinux_1_1_aarch64.whl", hash = "sha256:f93f26c19451bdd849b5057ead13ef53849b70b989602ed2205f9fb072b8d5e8"},
+    {file = "jq-1.5.0-cp37-cp37m-musllinux_1_1_i686.whl", hash = "sha256:53dc6b1b33b1461c58ebd5c98c643fc42f3c1c0312df2261cb39adc55d39da83"},
+    {file = "jq-1.5.0-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:3fc1b28afffda07aecf1518bd2a4e6289da4e02116827953abb576daf1f14ccb"},
+    {file = "jq-1.5.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:61f854e08e855de944a44290e3a8abdb203e7efd25f3604d19248b922d484206"},
+    {file = "jq-1.5.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:79725c2175ed646b03de5495b71e3b9baf8510dbe9296f1152d54ad9da533053"},
+    {file = "jq-1.5.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:54e9526677449460ab85d4189677f0ec1475204a08f3d0b4e7136e2fbc9733f9"},
+    {file = "jq-1.5.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:917800b823e9e49583e59145536ef937e84a2df6ec57a2a4c8650d8be459070f"},
+    {file = "jq-1.5.0-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:845c3f51fbc7dc8f182b9b18bead60b83bcd85af143ee5c439c8677b21b004ba"},
+    {file = "jq-1.5.0-cp38-cp38-musllinux_1_1_aarch64.whl", hash = "sha256:7818a9eb8ee41b98fb66ec1bc303c042ea75b2fd008f17ec0b6b45bc0553cae5"},
+    {file = "jq-1.5.0-cp38-cp38-musllinux_1_1_i686.whl", hash = "sha256:b9642b2f4da8bbee0bc1da9b565289109447080282a210533836755f70827a06"},
+    {file = "jq-1.5.0-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:e9455f21c29c1de276e12f6fb542e56e5ab9907cc690b902bc4f81bf7aa8085a"},
+    {file = "jq-1.5.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:7d432826327f85bc69cc70f4e7a518cd04d81c7b5b076397715b3fc6fae7a346"},
+    {file = "jq-1.5.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:ad47e6f5447aae2fb8a54c2838b778229ee76f2a1d38df0a00ddc496138bb289"},
+    {file = "jq-1.5.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:73047a032eecca1754ba0ed1f2f527127070bdc533915d93a7fd89771bc274b8"},
+    {file = "jq-1.5.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:26c085fd6e90756180e994da5b80ff98e7f2d595a862cc5356698d42b3dc5de3"},
+    {file = "jq-1.5.0-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:401e842eca76c2bdfb4843129c913a2bcfd03e40302a73446b56bedfe201d9da"},
+    {file = "jq-1.5.0-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:5211f65f2966c71ddd798808b05935b908c621a8feebe7bce82406df4207c503"},
+    {file = "jq-1.5.0-cp39-cp39-musllinux_1_1_i686.whl", hash = "sha256:4d956d481231d967d2bb085b3c28ee6d331b8ab322773c64105d800299e7e550"},
+    {file = "jq-1.5.0-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:c1d7218f64225e67c0d2e028f8c03a495a7322aa32b2536c454360aa399b41fc"},
+    {file = "jq-1.5.0-pp310-pypy310_pp73-macosx_10_9_x86_64.whl", hash = "sha256:722c673e38a43841afa56b60e57c1d20e57da3ebdcdfb16d8a4282f111402132"},
+    {file = "jq-1.5.0-pp310-pypy310_pp73-macosx_11_0_arm64.whl", hash = "sha256:2b1c96c193facf97b0cc97d2371762daee8647f6d0b95c24ed4aba3334c91617"},
+    {file = "jq-1.5.0-pp310-pypy310_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:01a63137a367feb02cbd76fc3b11c8a9c9420a6e78b3d77d3c3c5cce734223ab"},
+    {file = "jq-1.5.0-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:df3334e3508722f6926f595a1d5f9785bb5bcf1cd6f6a52e6703512931e9c688"},
+    {file = "jq-1.5.0-pp310-pypy310_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:596e75adc99fe78ffbdef038b69d8e4e71fc4dc4beb666b1a9aac6be4b2dfa83"},
+    {file = "jq-1.5.0-pp37-pypy37_pp73-macosx_10_9_x86_64.whl", hash = "sha256:d0146ee49414a2de37e16d5a5a3e5e1e4049c3d323e7080996a8d1e35466aab9"},
+    {file = "jq-1.5.0-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c0cc636285df64d5a4ba5254eeac128d95e1c89cc7dcf92ec734a380b815a846"},
+    {file = "jq-1.5.0-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a14cb4fa1aa82a83c6a018748c7d61039f70ae2d014f01d06bdbaaa3de2a45b5"},
+    {file = "jq-1.5.0-pp37-pypy37_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:afd4cd9146d60aaa61c84ddeba75f571f8fdc4d8295670f159aab2d5a6e3c9ac"},
+    {file = "jq-1.5.0-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:0388202601c4d7ab2bb3fe222d656cb5be14aad5298f21fac5bcb628e5d7fecd"},
+    {file = "jq-1.5.0-pp38-pypy38_pp73-macosx_11_0_arm64.whl", hash = "sha256:bb0ffd9cea0a365f63589db0cb13d9943964f2439f4a639eb4711ad3cbcfb4ad"},
+    {file = "jq-1.5.0-pp38-pypy38_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:de75c52529f3937da26f1980b17e545e1f685355b3f5644c8477daeed72b62b5"},
+    {file = "jq-1.5.0-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:443e2b05d19b60a6a615e6509ad96af772bd23f40dbdf6982c6ca651fa95e5c3"},
+    {file = "jq-1.5.0-pp38-pypy38_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:aee9d8cc64db2a86ce4122ef6984403286409b3ceb16cef89a24af3e479b7053"},
+    {file = "jq-1.5.0-pp39-pypy39_pp73-macosx_10_9_x86_64.whl", hash = "sha256:d03205bf0e4895c2b2f946963af8e6c01c32359107832ebbf00cf8fa7f119489"},
+    {file = "jq-1.5.0-pp39-pypy39_pp73-macosx_11_0_arm64.whl", hash = "sha256:aae4e79d2492622daca09d5ff1f59ffd83108ad8b7ae751958f30bb75112a870"},
+    {file = "jq-1.5.0-pp39-pypy39_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5c8442eaabd31e4771c864635518663f74e790218a6f783b277a60932ded8816"},
+    {file = "jq-1.5.0-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:314f05a52385e22b86fcc5fa24a394991f3f686867aff61ade11e0a6733494aa"},
+    {file = "jq-1.5.0-pp39-pypy39_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:5ae65cf2bba21106fb1062c81f44b1395e201250522fc85b64869e00542d3f59"},
+    {file = "jq-1.5.0.tar.gz", hash = "sha256:47695d97c300b6a5c36731d9cab12f6bf1cee35f01b3374063b87f868f2131d1"},
 ]
 
 [[package]]
@@ -2430,13 +2532,13 @@ files = [
 
 [[package]]
 name = "pytest"
-version = "7.4.0"
+version = "7.4.1"
 description = "pytest: simple powerful testing with Python"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pytest-7.4.0-py3-none-any.whl", hash = "sha256:78bf16451a2eb8c7a2ea98e32dc119fd2aa758f1d5d66dbf0a59d69a3969df32"},
-    {file = "pytest-7.4.0.tar.gz", hash = "sha256:b4bf8c45bd59934ed84001ad51e11b4ee40d40a1229d2c79f9c592b0a3f6bd8a"},
+    {file = "pytest-7.4.1-py3-none-any.whl", hash = "sha256:460c9a59b14e27c602eb5ece2e47bec99dc5fc5f6513cf924a7d03a578991b1f"},
+    {file = "pytest-7.4.1.tar.gz", hash = "sha256:2f2301e797521b23e4d2585a0a3d7b5e50fdddaaf7e7d6773ea26ddb17c213ab"},
 ]
 
 [package.dependencies]
@@ -2480,13 +2582,13 @@ cli = ["click (>=5.0)"]
 
 [[package]]
 name = "pytz"
-version = "2023.3"
+version = "2023.3.post1"
 description = "World timezone definitions, modern and historical"
 optional = false
 python-versions = "*"
 files = [
-    {file = "pytz-2023.3-py2.py3-none-any.whl", hash = "sha256:a151b3abb88eda1d4e34a9814df37de2a80e301e68ba0fd856fb9b46bfbbbffb"},
-    {file = "pytz-2023.3.tar.gz", hash = "sha256:1d8ce29db189191fb55338ee6d0387d82ab59f3d00eac103412d64e0ebd0c588"},
+    {file = "pytz-2023.3.post1-py2.py3-none-any.whl", hash = "sha256:ce42d816b81b68506614c11e8937d3aa9e41007ceb50bfdcb0749b921bf646c7"},
+    {file = "pytz-2023.3.post1.tar.gz", hash = "sha256:7b4fddbeb94a1eba4b557da24f19fdf9db575192544270a9101d8509f9f43d7b"},
 ]
 
 [[package]]
@@ -3459,13 +3561,13 @@ test = ["argcomplete (>=2.0)", "pre-commit", "pytest", "pytest-mock"]
 
 [[package]]
 name = "transformers"
-version = "4.32.1"
+version = "4.33.1"
 description = "State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow"
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "transformers-4.32.1-py3-none-any.whl", hash = "sha256:b930d3dbd907a3f300cf49e54d63a56f8a0ab16b01a2c2a61ecff37c6de1da08"},
-    {file = "transformers-4.32.1.tar.gz", hash = "sha256:1edc8ae1de357d97c3d36b04412aa63d55e6fc0c4b39b419a7d380ed947d2252"},
+    {file = "transformers-4.33.1-py3-none-any.whl", hash = "sha256:0630c2d26448d7c6cb78435e6c43910c89e99387badea6be1f565ffa3f093f1d"},
+    {file = "transformers-4.33.1.tar.gz", hash = "sha256:744265e9f0724d22c229938f28376af54abce730ef647f35bd1685abf49912a4"},
 ]
 
 [package.dependencies]
@@ -3482,16 +3584,16 @@ tqdm = ">=4.27"
 
 [package.extras]
 accelerate = ["accelerate (>=0.20.3)"]
-agents = ["Pillow (<10.0.0)", "accelerate (>=0.20.3)", "datasets (!=2.5.0)", "diffusers", "opencv-python", "sentencepiece (>=0.1.91,!=0.1.92)", "torch (>=1.9,!=1.12.0)"]
-all = ["Pillow (<10.0.0)", "accelerate (>=0.20.3)", "av (==9.2.0)", "codecarbon (==1.2.0)", "decord (==0.6.0)", "flax (>=0.4.1,<=0.7.0)", "jax (>=0.4.1,<=0.4.13)", "jaxlib (>=0.4.1,<=0.4.13)", "kenlm", "keras-nlp (>=0.3.1)", "librosa", "onnxconverter-common", "optax (>=0.0.8,<=0.1.4)", "optuna", "phonemizer", "protobuf", "pyctcdecode (>=0.4.0)", "ray[tune]", "sentencepiece (>=0.1.91,!=0.1.92)", "sigopt", "tensorflow (>=2.6,<2.14)", "tensorflow-text (<2.14)", "tf2onnx", "timm", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.9,!=1.12.0)", "torchaudio", "torchvision"]
+agents = ["Pillow (<10.0.0)", "accelerate (>=0.20.3)", "datasets (!=2.5.0)", "diffusers", "opencv-python", "sentencepiece (>=0.1.91,!=0.1.92)", "torch (>=1.10,!=1.12.0)"]
+all = ["Pillow (<10.0.0)", "accelerate (>=0.20.3)", "av (==9.2.0)", "codecarbon (==1.2.0)", "decord (==0.6.0)", "flax (>=0.4.1,<=0.7.0)", "jax (>=0.4.1,<=0.4.13)", "jaxlib (>=0.4.1,<=0.4.13)", "kenlm", "keras-nlp (>=0.3.1)", "librosa", "onnxconverter-common", "optax (>=0.0.8,<=0.1.4)", "optuna", "phonemizer", "protobuf", "pyctcdecode (>=0.4.0)", "ray[tune]", "sentencepiece (>=0.1.91,!=0.1.92)", "sigopt", "tensorflow (>=2.6,<2.15)", "tensorflow-text (<2.15)", "tf2onnx", "timm", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.10,!=1.12.0)", "torchaudio", "torchvision"]
 audio = ["kenlm", "librosa", "phonemizer", "pyctcdecode (>=0.4.0)"]
 codecarbon = ["codecarbon (==1.2.0)"]
 deepspeed = ["accelerate (>=0.20.3)", "deepspeed (>=0.9.3)"]
 deepspeed-testing = ["GitPython (<3.1.19)", "accelerate (>=0.20.3)", "beautifulsoup4", "black (>=23.1,<24.0)", "cookiecutter (==1.7.3)", "datasets (!=2.5.0)", "deepspeed (>=0.9.3)", "dill (<0.3.5)", "evaluate (>=0.2.0)", "faiss-cpu", "hf-doc-builder (>=0.3.0)", "nltk", "optuna", "parameterized", "protobuf", "psutil", "pytest (>=7.2.0)", "pytest-timeout", "pytest-xdist", "rjieba", "rouge-score (!=0.0.7,!=0.0.8,!=0.1,!=0.1.1)", "sacrebleu (>=1.4.12,<2.0.0)", "sacremoses", "sentencepiece (>=0.1.91,!=0.1.92)", "timeout-decorator"]
-dev = ["GitPython (<3.1.19)", "Pillow (<10.0.0)", "accelerate (>=0.20.3)", "av (==9.2.0)", "beautifulsoup4", "black (>=23.1,<24.0)", "codecarbon (==1.2.0)", "cookiecutter (==1.7.3)", "datasets (!=2.5.0)", "decord (==0.6.0)", "dill (<0.3.5)", "evaluate (>=0.2.0)", "faiss-cpu", "flax (>=0.4.1,<=0.7.0)", "fugashi (>=1.0)", "hf-doc-builder", "hf-doc-builder (>=0.3.0)", "ipadic (>=1.0.0,<2.0)", "isort (>=5.5.4)", "jax (>=0.4.1,<=0.4.13)", "jaxlib (>=0.4.1,<=0.4.13)", "kenlm", "keras-nlp (>=0.3.1)", "librosa", "nltk", "onnxconverter-common", "optax (>=0.0.8,<=0.1.4)", "optuna", "parameterized", "phonemizer", "protobuf", "psutil", "pyctcdecode (>=0.4.0)", "pytest (>=7.2.0)", "pytest-timeout", "pytest-xdist", "ray[tune]", "rhoknp (>=1.1.0,<1.3.1)", "rjieba", "rouge-score (!=0.0.7,!=0.0.8,!=0.1,!=0.1.1)", "ruff (>=0.0.241,<=0.0.259)", "sacrebleu (>=1.4.12,<2.0.0)", "sacremoses", "scikit-learn", "sentencepiece (>=0.1.91,!=0.1.92)", "sigopt", "sudachidict-core (>=20220729)", "sudachipy (>=0.6.6)", "tensorflow (>=2.6,<2.14)", "tensorflow-text (<2.14)", "tf2onnx", "timeout-decorator", "timm", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.9,!=1.12.0)", "torchaudio", "torchvision", "unidic (>=1.0.2)", "unidic-lite (>=1.0.7)", "urllib3 (<2.0.0)"]
-dev-tensorflow = ["GitPython (<3.1.19)", "Pillow (<10.0.0)", "beautifulsoup4", "black (>=23.1,<24.0)", "cookiecutter (==1.7.3)", "datasets (!=2.5.0)", "dill (<0.3.5)", "evaluate (>=0.2.0)", "faiss-cpu", "hf-doc-builder", "hf-doc-builder (>=0.3.0)", "isort (>=5.5.4)", "kenlm", "keras-nlp (>=0.3.1)", "librosa", "nltk", "onnxconverter-common", "onnxruntime (>=1.4.0)", "onnxruntime-tools (>=1.4.2)", "parameterized", "phonemizer", "protobuf", "psutil", "pyctcdecode (>=0.4.0)", "pytest (>=7.2.0)", "pytest-timeout", "pytest-xdist", "rjieba", "rouge-score (!=0.0.7,!=0.0.8,!=0.1,!=0.1.1)", "ruff (>=0.0.241,<=0.0.259)", "sacrebleu (>=1.4.12,<2.0.0)", "sacremoses", "scikit-learn", "sentencepiece (>=0.1.91,!=0.1.92)", "tensorflow (>=2.6,<2.14)", "tensorflow-text (<2.14)", "tf2onnx", "timeout-decorator", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "urllib3 (<2.0.0)"]
-dev-torch = ["GitPython (<3.1.19)", "Pillow (<10.0.0)", "accelerate (>=0.20.3)", "beautifulsoup4", "black (>=23.1,<24.0)", "codecarbon (==1.2.0)", "cookiecutter (==1.7.3)", "datasets (!=2.5.0)", "dill (<0.3.5)", "evaluate (>=0.2.0)", "faiss-cpu", "fugashi (>=1.0)", "hf-doc-builder", "hf-doc-builder (>=0.3.0)", "ipadic (>=1.0.0,<2.0)", "isort (>=5.5.4)", "kenlm", "librosa", "nltk", "onnxruntime (>=1.4.0)", "onnxruntime-tools (>=1.4.2)", "optuna", "parameterized", "phonemizer", "protobuf", "psutil", "pyctcdecode (>=0.4.0)", "pytest (>=7.2.0)", "pytest-timeout", "pytest-xdist", "ray[tune]", "rhoknp (>=1.1.0,<1.3.1)", "rjieba", "rouge-score (!=0.0.7,!=0.0.8,!=0.1,!=0.1.1)", "ruff (>=0.0.241,<=0.0.259)", "sacrebleu (>=1.4.12,<2.0.0)", "sacremoses", "scikit-learn", "sentencepiece (>=0.1.91,!=0.1.92)", "sigopt", "sudachidict-core (>=20220729)", "sudachipy (>=0.6.6)", "timeout-decorator", "timm", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.9,!=1.12.0)", "torchaudio", "torchvision", "unidic (>=1.0.2)", "unidic-lite (>=1.0.7)", "urllib3 (<2.0.0)"]
-docs = ["Pillow (<10.0.0)", "accelerate (>=0.20.3)", "av (==9.2.0)", "codecarbon (==1.2.0)", "decord (==0.6.0)", "flax (>=0.4.1,<=0.7.0)", "hf-doc-builder", "jax (>=0.4.1,<=0.4.13)", "jaxlib (>=0.4.1,<=0.4.13)", "kenlm", "keras-nlp (>=0.3.1)", "librosa", "onnxconverter-common", "optax (>=0.0.8,<=0.1.4)", "optuna", "phonemizer", "protobuf", "pyctcdecode (>=0.4.0)", "ray[tune]", "sentencepiece (>=0.1.91,!=0.1.92)", "sigopt", "tensorflow (>=2.6,<2.14)", "tensorflow-text (<2.14)", "tf2onnx", "timm", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.9,!=1.12.0)", "torchaudio", "torchvision"]
+dev = ["GitPython (<3.1.19)", "Pillow (<10.0.0)", "accelerate (>=0.20.3)", "av (==9.2.0)", "beautifulsoup4", "black (>=23.1,<24.0)", "codecarbon (==1.2.0)", "cookiecutter (==1.7.3)", "datasets (!=2.5.0)", "decord (==0.6.0)", "dill (<0.3.5)", "evaluate (>=0.2.0)", "faiss-cpu", "flax (>=0.4.1,<=0.7.0)", "fugashi (>=1.0)", "hf-doc-builder", "hf-doc-builder (>=0.3.0)", "ipadic (>=1.0.0,<2.0)", "isort (>=5.5.4)", "jax (>=0.4.1,<=0.4.13)", "jaxlib (>=0.4.1,<=0.4.13)", "kenlm", "keras-nlp (>=0.3.1)", "librosa", "nltk", "onnxconverter-common", "optax (>=0.0.8,<=0.1.4)", "optuna", "parameterized", "phonemizer", "protobuf", "psutil", "pyctcdecode (>=0.4.0)", "pytest (>=7.2.0)", "pytest-timeout", "pytest-xdist", "ray[tune]", "rhoknp (>=1.1.0,<1.3.1)", "rjieba", "rouge-score (!=0.0.7,!=0.0.8,!=0.1,!=0.1.1)", "ruff (>=0.0.241,<=0.0.259)", "sacrebleu (>=1.4.12,<2.0.0)", "sacremoses", "scikit-learn", "sentencepiece (>=0.1.91,!=0.1.92)", "sigopt", "sudachidict-core (>=20220729)", "sudachipy (>=0.6.6)", "tensorflow (>=2.6,<2.15)", "tensorflow-text (<2.15)", "tf2onnx", "timeout-decorator", "timm", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.10,!=1.12.0)", "torchaudio", "torchvision", "unidic (>=1.0.2)", "unidic-lite (>=1.0.7)", "urllib3 (<2.0.0)"]
+dev-tensorflow = ["GitPython (<3.1.19)", "Pillow (<10.0.0)", "beautifulsoup4", "black (>=23.1,<24.0)", "cookiecutter (==1.7.3)", "datasets (!=2.5.0)", "dill (<0.3.5)", "evaluate (>=0.2.0)", "faiss-cpu", "hf-doc-builder", "hf-doc-builder (>=0.3.0)", "isort (>=5.5.4)", "kenlm", "keras-nlp (>=0.3.1)", "librosa", "nltk", "onnxconverter-common", "onnxruntime (>=1.4.0)", "onnxruntime-tools (>=1.4.2)", "parameterized", "phonemizer", "protobuf", "psutil", "pyctcdecode (>=0.4.0)", "pytest (>=7.2.0)", "pytest-timeout", "pytest-xdist", "rjieba", "rouge-score (!=0.0.7,!=0.0.8,!=0.1,!=0.1.1)", "ruff (>=0.0.241,<=0.0.259)", "sacrebleu (>=1.4.12,<2.0.0)", "sacremoses", "scikit-learn", "sentencepiece (>=0.1.91,!=0.1.92)", "tensorflow (>=2.6,<2.15)", "tensorflow-text (<2.15)", "tf2onnx", "timeout-decorator", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "urllib3 (<2.0.0)"]
+dev-torch = ["GitPython (<3.1.19)", "Pillow (<10.0.0)", "accelerate (>=0.20.3)", "beautifulsoup4", "black (>=23.1,<24.0)", "codecarbon (==1.2.0)", "cookiecutter (==1.7.3)", "datasets (!=2.5.0)", "dill (<0.3.5)", "evaluate (>=0.2.0)", "faiss-cpu", "fugashi (>=1.0)", "hf-doc-builder", "hf-doc-builder (>=0.3.0)", "ipadic (>=1.0.0,<2.0)", "isort (>=5.5.4)", "kenlm", "librosa", "nltk", "onnxruntime (>=1.4.0)", "onnxruntime-tools (>=1.4.2)", "optuna", "parameterized", "phonemizer", "protobuf", "psutil", "pyctcdecode (>=0.4.0)", "pytest (>=7.2.0)", "pytest-timeout", "pytest-xdist", "ray[tune]", "rhoknp (>=1.1.0,<1.3.1)", "rjieba", "rouge-score (!=0.0.7,!=0.0.8,!=0.1,!=0.1.1)", "ruff (>=0.0.241,<=0.0.259)", "sacrebleu (>=1.4.12,<2.0.0)", "sacremoses", "scikit-learn", "sentencepiece (>=0.1.91,!=0.1.92)", "sigopt", "sudachidict-core (>=20220729)", "sudachipy (>=0.6.6)", "timeout-decorator", "timm", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.10,!=1.12.0)", "torchaudio", "torchvision", "unidic (>=1.0.2)", "unidic-lite (>=1.0.7)", "urllib3 (<2.0.0)"]
+docs = ["Pillow (<10.0.0)", "accelerate (>=0.20.3)", "av (==9.2.0)", "codecarbon (==1.2.0)", "decord (==0.6.0)", "flax (>=0.4.1,<=0.7.0)", "hf-doc-builder", "jax (>=0.4.1,<=0.4.13)", "jaxlib (>=0.4.1,<=0.4.13)", "kenlm", "keras-nlp (>=0.3.1)", "librosa", "onnxconverter-common", "optax (>=0.0.8,<=0.1.4)", "optuna", "phonemizer", "protobuf", "pyctcdecode (>=0.4.0)", "ray[tune]", "sentencepiece (>=0.1.91,!=0.1.92)", "sigopt", "tensorflow (>=2.6,<2.15)", "tensorflow-text (<2.15)", "tf2onnx", "timm", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.10,!=1.12.0)", "torchaudio", "torchvision"]
 docs-specific = ["hf-doc-builder"]
 fairscale = ["fairscale (>0.3)"]
 flax = ["flax (>=0.4.1,<=0.7.0)", "jax (>=0.4.1,<=0.4.13)", "jaxlib (>=0.4.1,<=0.4.13)", "optax (>=0.0.8,<=0.1.4)"]
@@ -3514,15 +3616,15 @@ sigopt = ["sigopt"]
 sklearn = ["scikit-learn"]
 speech = ["kenlm", "librosa", "phonemizer", "pyctcdecode (>=0.4.0)", "torchaudio"]
 testing = ["GitPython (<3.1.19)", "beautifulsoup4", "black (>=23.1,<24.0)", "cookiecutter (==1.7.3)", "datasets (!=2.5.0)", "dill (<0.3.5)", "evaluate (>=0.2.0)", "faiss-cpu", "hf-doc-builder (>=0.3.0)", "nltk", "parameterized", "protobuf", "psutil", "pytest (>=7.2.0)", "pytest-timeout", "pytest-xdist", "rjieba", "rouge-score (!=0.0.7,!=0.0.8,!=0.1,!=0.1.1)", "sacrebleu (>=1.4.12,<2.0.0)", "sacremoses", "timeout-decorator"]
-tf = ["keras-nlp (>=0.3.1)", "onnxconverter-common", "tensorflow (>=2.6,<2.14)", "tensorflow-text (<2.14)", "tf2onnx"]
-tf-cpu = ["keras-nlp (>=0.3.1)", "onnxconverter-common", "tensorflow-cpu (>=2.6,<2.14)", "tensorflow-text (<2.14)", "tf2onnx"]
+tf = ["keras-nlp (>=0.3.1)", "onnxconverter-common", "tensorflow (>=2.6,<2.15)", "tensorflow-text (<2.15)", "tf2onnx"]
+tf-cpu = ["keras-nlp (>=0.3.1)", "onnxconverter-common", "tensorflow-cpu (>=2.6,<2.15)", "tensorflow-text (<2.15)", "tf2onnx"]
 tf-speech = ["kenlm", "librosa", "phonemizer", "pyctcdecode (>=0.4.0)"]
 timm = ["timm"]
 tokenizers = ["tokenizers (>=0.11.1,!=0.11.3,<0.14)"]
-torch = ["accelerate (>=0.20.3)", "torch (>=1.9,!=1.12.0)"]
+torch = ["accelerate (>=0.20.3)", "torch (>=1.10,!=1.12.0)"]
 torch-speech = ["kenlm", "librosa", "phonemizer", "pyctcdecode (>=0.4.0)", "torchaudio"]
 torch-vision = ["Pillow (<10.0.0)", "torchvision"]
-torchhub = ["filelock", "huggingface-hub (>=0.15.1,<1.0)", "importlib-metadata", "numpy (>=1.17)", "packaging (>=20.0)", "protobuf", "regex (!=2019.12.17)", "requests", "sentencepiece (>=0.1.91,!=0.1.92)", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.9,!=1.12.0)", "tqdm (>=4.27)"]
+torchhub = ["filelock", "huggingface-hub (>=0.15.1,<1.0)", "importlib-metadata", "numpy (>=1.17)", "packaging (>=20.0)", "protobuf", "regex (!=2019.12.17)", "requests", "sentencepiece (>=0.1.91,!=0.1.92)", "tokenizers (>=0.11.1,!=0.11.3,<0.14)", "torch (>=1.10,!=1.12.0)", "tqdm (>=4.27)"]
 video = ["av (==9.2.0)", "decord (==0.6.0)"]
 vision = ["Pillow (<10.0.0)"]
 
@@ -3958,4 +4060,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "d3809088a6aa9cc8d6feb583e2c66d90359d6c865bd7232477265d486112cdc9"
+content-hash = "d2707c9d0195cc60c3c60082abae2e39a31b06549b18fede675e2e65a9ab6916"
