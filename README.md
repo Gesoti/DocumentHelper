@@ -6,10 +6,17 @@ This Virtual assistant will help you parse your own documents into a vectorstore
 
 ## Technical section
 
-### How to use
-*TODO*
+### 1. How to use
+**experiment** folder contains the notebook I used to create the vectorstore for this task.  
+**documenthelper** has a small python script you can run to load the vectorstore and ask questions.   
+Run by using the commands below   
+```
+cd documenthelper
+poetry run va
+```
+DISCLAIMER: *models* and *vectorstore* folders  are not actually commited in the github repo, therefore the code will fail in other machines. You'll need to follow the instuctions to get the llama models and use the jupyer notebook in the *experiment* folder to re-create everything needed.
 
-### Preparing the llama2 models locally
+### 2. Preparing the llama2 models locally
 1. Request access and download models using this [repo](https://github.com/facebookresearch/llama)
     1. Request access to models.
     1. You'll need to clone locally
