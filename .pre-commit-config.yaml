@@ -3,10 +3,19 @@ repos:
     rev: v3.2.0
     hooks:
     -   id: trailing-whitespace
-        files: documenthelper/ tests/
     -   id: end-of-file-fixer
-        files: documenthelper/ tests/
     -   id: check-yaml
-        files: documenthelper/ tests/
     -   id: check-added-large-files
-        files: documenthelper/ tests/
+-   repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 23.9.1
+    hooks:
+    -   id: black
+        entry: black
+        language_version: python3.10
+-   repo: local
+    hooks:
+    -   id: pylint
+        name: pylint
+        entry: poetry run pylint
+        language: system
+        types: [python]
