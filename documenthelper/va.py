@@ -1,6 +1,7 @@
 # Here we'll try to create a Virtual Assistant, parsing a question and 
 import os
 import typing
+import json
 from collections import ChainMap
 from langchain.embeddings import LlamaCppEmbeddings
 from langchain.vectorstores import Chroma
@@ -10,31 +11,33 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
+def _read_json(filename: str) -> dict:
+    """Read json files in with consistent read config.
+    Args:
+        filename (str): the filename (and path) of the json file to read.
+    
+    Returns:
+        dict - contents of the file to read.
+    """
+    with open(filename, mode="r", encoding="utf-8") as f:
+        contents = json.load(f)
+    return contents
 
 def load_llama_model_configs() -> dict:
     """Prepare llama models' configs, both for Embeddings and LLM.
     Returns:
         dict - contains configs for llama models.
     """
-    # TODO: move configs to config file
-    llama_cpp_shared_configs = {
-        "n_gpu_layers": 1,                                 # max number of layers to get offloaded to GPU (35 according to model's metadata)
-        "n_batch": 512,                                     # Tokens to process in parallel
-        "n_ctx": 2048,                                      # Context window length (should be 4096 for llama2)
-        "f16_kv": True                                      # lower precision for less mem consumption
-    }
+    # LLama 2 model shared configs
+    llama_cpp_shared_configs = _read_json("model_config/llama_shared.json")
+    
+    # LLama 2 chat model configs
+    llama_llm_configs = _read_json("model_config/llama_chat-config.json")
+    llama_llm_configs["callback_manager"] = CallbackManager([StreamingStdOutCallbackHandler()])
+    
+    # LLama 2 base model configs
+    llama_llm_configs = _read_json("model_config/llama_shared.json")
 
-    llama_embeddings_configs = {
-        "model_path": "../models/llama-2-q4_0.gguf",
-        "n_gpu_layers": 1
-    }
-
-    llama_llm_configs={
-        "model_path": "../models/llama-2-chat-q8_0.gguf", 
-        "temperature":0,
-        "callback_manager": CallbackManager([StreamingStdOutCallbackHandler()]),
-        "verbose": True,
-    }
     return {"llama_cpp_shared_configs": llama_cpp_shared_configs, "llama_embeddings_configs": llama_embeddings_configs, "llama_llm_configs": llama_llm_configs}
 
 def load_vectorstore(embeddings: LlamaCppEmbeddings, vectorstore_path: str="../vectorstore/") -> Chroma:
