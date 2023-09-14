@@ -7,6 +7,7 @@ readme = "README.md"
 
 [tool.poetry.scripts]
 va = "documenthelper.va:main"
+embeddings = "documenthelper.embeddings:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"

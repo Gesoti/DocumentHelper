@@ -28,3 +28,6 @@ MANIFEST
 models
 vectorstore
 documents
+
+# editor settings
+.vscode
