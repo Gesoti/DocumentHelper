@@ -18,7 +18,7 @@ def load_llama_model_configs() -> dict:
     """
     # TODO: move configs to config file
     llama_cpp_shared_configs = {
-        "n_gpu_layers": 35,                                 # max number of layers to get offloaded to GPU (35 according to model's metadata)
+        "n_gpu_layers": 1,                                 # max number of layers to get offloaded to GPU (35 according to model's metadata)
         "n_batch": 512,                                     # Tokens to process in parallel
         "n_ctx": 2048,                                      # Context window length (should be 4096 for llama2)
         "f16_kv": True                                      # lower precision for less mem consumption
@@ -30,7 +30,7 @@ def load_llama_model_configs() -> dict:
     }
 
     llama_llm_configs={
-        "model_path": "../models/llama-2-chat-q4_0.gguf", 
+        "model_path": "../models/llama-2-chat-q8_0.gguf", 
         "temperature":0,
         "callback_manager": CallbackManager([StreamingStdOutCallbackHandler()]),
         "verbose": True,
@@ -67,9 +67,9 @@ def prepare_qa_chain(llm: LlamaCpp, vectorstore: Chroma) -> RetrievalQA:
     # Configure the QA chain so we can ask the LLM to answer questions based on our vectorstore's contents.
     template = """
         [INST]<<SYS>> You are an assistant for question-answering tasks. 
-        Use the following pieces of retrieved context to answer the question. 
-        If you don't know the answer, just say that you don't know. 
-        Use three sentences maximum and keep the answer concise.<</SYS>> 
+        Use the following pieces of retrieved Context to answer the Question. 
+        If the Context doesn't contain information to answer the Question, just say that you don't know. 
+        Use three sentences maximum and keep the Answer concise.<</SYS>> 
         Question: {question} 
         Context: {context} 
         Answer:[/INST]
@@ -103,7 +103,7 @@ def main():
     qa_chain = prepare_qa_chain(llm, vectorstore)
     
     while True:
-        question = input("Ask a question:\n")
+        question = input("Ask me a question:\n")
         qa_chain({"query": question})
 
 if __name__ == "__main__":
