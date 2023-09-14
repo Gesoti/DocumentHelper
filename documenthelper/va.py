@@ -1,6 +1,6 @@
-# Here we'll try to create a Virtual Assistant, parsing a question and 
+"""This module is responsible for creating a Virtual Assistant for querying documents loaded in our VectorStore."""
 import os
-import typing
+import typing  # pylint: disable=unused-import
 import json
 from collections import ChainMap
 from langchain.embeddings import LlamaCppEmbeddings
@@ -11,18 +11,21 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
+
 def _read_json(filename: str) -> dict:
     """Read json files in with consistent read config.
     Args:
         filename (str): the filename (and path) of the json file to read.
-    
+
     Returns:
         dict - contents of the file to read.
     """
-    with open(filename, mode="r", encoding="utf-8") as f:
-        contents = json.load(f)
+    with open(filename, mode="r", encoding="utf-8") as file:
+        contents = json.load(file)
     return contents
 
+
+# TODO: move config loader to utils folder
 def load_llama_model_configs() -> dict:
     """Prepare llama models' configs, both for Embeddings and LLM.
     Returns:
@@ -30,20 +33,29 @@ def load_llama_model_configs() -> dict:
     """
     # LLama 2 model shared configs
     llama_cpp_shared_configs = _read_json("model_config/llama_shared.json")
-    
+
     # LLama 2 chat model configs
     llama_llm_configs = _read_json("model_config/llama_chat-config.json")
-    llama_llm_configs["callback_manager"] = CallbackManager([StreamingStdOutCallbackHandler()])
-    
+    llama_llm_configs["callback_manager"] = CallbackManager(
+        [StreamingStdOutCallbackHandler()]
+    )
+
     # LLama 2 base model configs
-    llama_llm_configs = _read_json("model_config/llama_shared.json")
+    llama_embeddings_configs = _read_json("model_config/llama-embedding-config.json")
 
-    return {"llama_cpp_shared_configs": llama_cpp_shared_configs, "llama_embeddings_configs": llama_embeddings_configs, "llama_llm_configs": llama_llm_configs}
+    return {
+        "llama_cpp_shared_configs": llama_cpp_shared_configs,
+        "llama_embeddings_configs": llama_embeddings_configs,
+        "llama_llm_configs": llama_llm_configs,
+    }
 
-def load_vectorstore(embeddings: LlamaCppEmbeddings, vectorstore_path: str="../vectorstore/") -> Chroma:
+
+def load_vectorstore(
+    embeddings: LlamaCppEmbeddings, vectorstore_path: str = "../vectorstore/"
+) -> Chroma:
     """Load a locally stored Chroma vectorstore containing our embedded documents.
     Args:
-        embeddings (langchain.embeddings.LlamaCppEmbeddings): The embeddings model to use when creating the questions embeddings.
+        embeddings (LlamaCppEmbeddings): The embeddings model to use when creating the questions embeddings.
         vectorstore_path (str): The path to the local vectorstore, defaults to "../vectorstore/".
 
     Returns:
@@ -53,10 +65,10 @@ def load_vectorstore(embeddings: LlamaCppEmbeddings, vectorstore_path: str="../v
     # Load vectorstore from disk
     if os.listdir(vectorstore_path):
         vectorstore = Chroma(
-            embedding_function=embeddings,
-            persist_directory=vectorstore_path
+            embedding_function=embeddings, persist_directory=vectorstore_path
         )
     return vectorstore
+
 
 def prepare_qa_chain(llm: LlamaCpp, vectorstore: Chroma) -> RetrievalQA:
     """Prepares a QA chain to enable us to ask questions and get answers from an LLM.
@@ -69,45 +81,57 @@ def prepare_qa_chain(llm: LlamaCpp, vectorstore: Chroma) -> RetrievalQA:
     """
     # Configure the QA chain so we can ask the LLM to answer questions based on our vectorstore's contents.
     template = """
-        [INST]<<SYS>> You are an assistant for question-answering tasks. 
-        Use the following pieces of retrieved Context to answer the Question. 
-        If the Context doesn't contain information to answer the Question, just say that you don't know. 
-        Use three sentences maximum and keep the Answer concise.<</SYS>> 
-        Question: {question} 
-        Context: {context} 
+        [INST]<<SYS>> You are an assistant for question-answering tasks.
+        Use the following pieces of retrieved Context to answer the Question.
+        If the Context doesn't contain information to answer the Question, just say that you don't know.
+        Use three sentences maximum and keep the Answer concise.<</SYS>>
+        Question: {question}
+        Context: {context}
         Answer:[/INST]
     """
 
-    QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
+    qa_chain_prompt = PromptTemplate.from_template(template)
 
     qa_chain = RetrievalQA.from_chain_type(
-        llm, 
+        llm,
         retriever=vectorstore.as_retriever(),
-        chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
-        return_source_documents=True
+        chain_type_kwargs={"prompt": qa_chain_prompt},
+        return_source_documents=True,
     )
     return qa_chain
 
 
 def main():
+    """Main method to be used as entry point for `poetry run va` command."""
+
     # LLama2 model configs
     # Some configs taken from https://python.langchain.com/docs/guides/local_llms#llamacpp
     llama_model_configs = load_llama_model_configs()
- 
+
     # Instantiate embeddings to use to transform documents to vectors before storing
-    embeddings = LlamaCppEmbeddings(**ChainMap(llama_model_configs["llama_embeddings_configs"],
-                                               llama_model_configs["llama_cpp_shared_configs"]))
+    embeddings = LlamaCppEmbeddings(
+        **ChainMap(
+            llama_model_configs["llama_embeddings_configs"],
+            llama_model_configs["llama_cpp_shared_configs"],
+        )
+    )
 
     # Instantiate llama llm
-    llm = LlamaCpp(**ChainMap(llama_model_configs["llama_llm_configs"], llama_model_configs["llama_cpp_shared_configs"]))
+    llm = LlamaCpp(
+        **ChainMap(
+            llama_model_configs["llama_llm_configs"],
+            llama_model_configs["llama_cpp_shared_configs"],
+        )
+    )
 
     vectorstore = load_vectorstore(embeddings)
 
     qa_chain = prepare_qa_chain(llm, vectorstore)
-    
+
     while True:
         question = input("Ask me a question:\n")
         qa_chain({"query": question})
+
 
 if __name__ == "__main__":
     main()
