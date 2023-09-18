@@ -4,6 +4,8 @@ version = "0.1.0"
 description = ""
 authors = ["Georgios Soteriou"]
 readme = "README.md"
+license = "MIT"
+packages = [{include = "documenthelper"}]
 
 [tool.poetry.scripts]
 va = "documenthelper.va:main"
@@ -15,7 +17,6 @@ chromadb = "^0.4.8"
 langchain = "^0.0.279"
 bs4 = "^0.0.1"
 llama-cpp-python = "^0.1.83"
-
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"

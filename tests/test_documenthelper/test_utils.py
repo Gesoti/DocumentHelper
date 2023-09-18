@@ -1,5 +1,6 @@
 """Tests for the documenthelper.utils module."""
 import typing  # pylint: disable=unused-import
+import pytest  # pylint: disable=unused-import
 from documenthelper.utils import load_llama_model_configs
 
 
