@@ -60,8 +60,7 @@ def load_vectorstore(
         Chroma - vectorstore instance to use.
     """
     # Load vectorstore from disk
-    if os.listdir(vectorstore_path):
-        vectorstore = Chroma(
-            embedding_function=embeddings, persist_directory=vectorstore_path
-        )
+    vectorstore = Chroma(
+        embedding_function=embeddings, persist_directory=vectorstore_path
+    )
     return vectorstore
