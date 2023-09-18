@@ -13,7 +13,7 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
 # local repo imports
-from documenthelper.utils import read_json, load_llama_model_configs
+from documenthelper.utils import load_llama_model_configs
 
 
 def load_vectorstore(
