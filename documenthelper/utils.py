@@ -2,10 +2,13 @@
 # Generic python imports
 import typing  # pylint: disable=unused-import
 import json
+import os
 
 # Langchain specific imports
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.embeddings.base import Embeddings
+from langchain.vectorstores.chroma import Chroma
 
 
 def read_json(filename: str) -> dict:
@@ -43,3 +46,22 @@ def load_llama_model_configs() -> dict:
         "llama_embeddings_configs": llama_embeddings_configs,
         "llama_llm_configs": llama_llm_configs,
     }
+
+
+def load_vectorstore(
+    embeddings: Embeddings, vectorstore_path: str = "../vectorstore/"
+) -> Chroma:
+    """Load a locally stored Chroma vectorstore containing our embedded documents.
+    Args:
+        embeddings (Embeddings): The embeddings model to use when creating the questions embeddings.
+        vectorstore_path (str): The path to the local vectorstore, defaults to "../vectorstore/".
+
+    Returns:
+        Chroma - vectorstore instance to use.
+    """
+    # Load vectorstore from disk
+    if os.listdir(vectorstore_path):
+        vectorstore = Chroma(
+            embedding_function=embeddings, persist_directory=vectorstore_path
+        )
+    return vectorstore

@@ -13,27 +13,7 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
 # local repo imports
-from documenthelper.utils import load_llama_model_configs
-
-
-def load_vectorstore(
-    embeddings: LlamaCppEmbeddings, vectorstore_path: str = "../vectorstore/"
-) -> Chroma:
-    """Load a locally stored Chroma vectorstore containing our embedded documents.
-    Args:
-        embeddings (LlamaCppEmbeddings): The embeddings model to use when creating the questions embeddings.
-        vectorstore_path (str): The path to the local vectorstore, defaults to "../vectorstore/".
-
-    Returns:
-        langchain.vectorstores.Chroma - vectorstore instance to use.
-    """
-    # TODO: move configs to config file
-    # Load vectorstore from disk
-    if os.listdir(vectorstore_path):
-        vectorstore = Chroma(
-            embedding_function=embeddings, persist_directory=vectorstore_path
-        )
-    return vectorstore
+from documenthelper.utils import load_llama_model_configs, load_vectorstore
 
 
 def prepare_qa_chain(llm: LlamaCpp, vectorstore: Chroma) -> RetrievalQA:
