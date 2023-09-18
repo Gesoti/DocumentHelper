@@ -2,7 +2,6 @@
 # Generic python imports
 import typing  # pylint: disable=unused-import
 import json
-import os
 
 # Langchain specific imports
 from langchain.callbacks.manager import CallbackManager

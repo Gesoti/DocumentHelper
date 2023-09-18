@@ -1,8 +1,6 @@
 """This module is responsible for creating a Virtual Assistant for querying documents loaded in our VectorStore."""  #
 # Python generic imports
-import os
 import typing  # pylint: disable=unused-import
-import json
 from collections import ChainMap
 
 # Langchain imports
