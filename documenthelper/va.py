@@ -1,53 +1,19 @@
-"""This module is responsible for creating a Virtual Assistant for querying documents loaded in our VectorStore."""
+"""This module is responsible for creating a Virtual Assistant for querying documents loaded in our VectorStore."""  #
+# Python generic imports
 import os
 import typing  # pylint: disable=unused-import
 import json
 from collections import ChainMap
+
+# Langchain imports
 from langchain.embeddings import LlamaCppEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.llms import LlamaCpp
-from langchain.callbacks.manager import CallbackManager
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
-
-def _read_json(filename: str) -> dict:
-    """Read json files in with consistent read config.
-    Args:
-        filename (str): the filename (and path) of the json file to read.
-
-    Returns:
-        dict - contents of the file to read.
-    """
-    with open(filename, mode="r", encoding="utf-8") as file:
-        contents = json.load(file)
-    return contents
-
-
-# TODO: move config loader to utils folder
-def load_llama_model_configs() -> dict:
-    """Prepare llama models' configs, both for Embeddings and LLM.
-    Returns:
-        dict - contains configs for llama models.
-    """
-    # LLama 2 model shared configs
-    llama_cpp_shared_configs = _read_json("model_config/llama_shared.json")
-
-    # LLama 2 chat model configs
-    llama_llm_configs = _read_json("model_config/llama_chat-config.json")
-    llama_llm_configs["callback_manager"] = CallbackManager(
-        [StreamingStdOutCallbackHandler()]
-    )
-
-    # LLama 2 base model configs
-    llama_embeddings_configs = _read_json("model_config/llama-embedding-config.json")
-
-    return {
-        "llama_cpp_shared_configs": llama_cpp_shared_configs,
-        "llama_embeddings_configs": llama_embeddings_configs,
-        "llama_llm_configs": llama_llm_configs,
-    }
+# local repo imports
+from documenthelper.utils import read_json, load_llama_model_configs
 
 
 def load_vectorstore(
