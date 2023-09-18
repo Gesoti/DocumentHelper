@@ -4,6 +4,7 @@ This module is responsible for adding document embeddings in our local VectorSto
 """
 # Python generic imports
 import typing  # pylint: disable=unused-import
+import argparse
 
 # import argparse
 from collections import ChainMap
@@ -48,10 +49,10 @@ def main() -> None:
     url = "https://lilianweng.github.io/posts/2023-06-23-agent/"
 
     # Create argparser and get url if given
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("--url", type=str, default=url)
-    # args = parser.parse_args()
-    # print(args)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--url", type=str, default=url)
+    args = parser.parse_args()
+    print(args)
 
     # Load configs
     config = load_llama_model_configs()
