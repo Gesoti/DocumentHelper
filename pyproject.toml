@@ -4,34 +4,25 @@ version = "0.1.0"
 description = ""
 authors = ["Georgios Soteriou"]
 readme = "README.md"
+license = "MIT"
+packages = [{include = "documenthelper"}]
 
 [tool.poetry.scripts]
 va = "documenthelper.va:main"
+embeddings = "documenthelper.embeddings:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-openai = "^0.28.0"
 chromadb = "^0.4.8"
 langchain = "^0.0.279"
 bs4 = "^0.0.1"
-tiktoken = "^0.4.0"
-sentence-transformers = "^2.2.2"
 llama-cpp-python = "^0.1.83"
-pypdf = "^3.15.5"
-gpt4all = "^1.0.9"
-fastapi = "<0.100"
-uvicorn = {extras = ["standard"], version = "^0.23.2"}
-jq = "^1.5.0"
-
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
 pytest = "^7.4.0"
-precommit-hook = "^0.2.1"
 ipykernel = "^6.25.1"
-pandas = "^2.1.0"
-datasets = "^2.14.4"
-huggingface-hub = "^0.16.4"
+pre-commit = "^3.4.0"
 
 [build-system]
 requires = ["poetry-core"]
